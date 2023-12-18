@@ -348,8 +348,6 @@ if __name__ == "__main__":
         os.path.join(SCENES_PATH, scene) for scene in os.listdir(SCENES_PATH)
     ]
     for scene_path in tqdm(scene_paths, desc="▶️  Analyzing scenes"):
-        if "05" not in scene_path:
-            continue
         g_means, diff_g_sums, cloud_percents, light_percents, flow_sums = analyze_scene(
             scene_path,
             ground_model,
