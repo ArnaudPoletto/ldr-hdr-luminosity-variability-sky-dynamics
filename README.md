@@ -84,7 +84,7 @@ To reproduce the results, follow these steps:
     data
     ├── ldr
     │   ├── raw
-    │   │   └── P1SceneXX.mp4
+    └   └   └── P1SceneXX.mp4
     ```
 
 
