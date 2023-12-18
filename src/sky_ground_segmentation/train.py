@@ -1,10 +1,12 @@
 import sys
 from pathlib import Path
+
 GLOBAL_DIR = Path(__file__).parent / ".." / ".."
 sys.path.append(str(GLOBAL_DIR))
 
 import os
-os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
+
+os.environ["KMP_DUPLICATE_LIB_OK"] = "True"
 
 from ranger_adabelief import RangerAdaBelief
 
@@ -115,6 +117,9 @@ def ask_model():
 
     Returns:
         model_type (str): The model type
+
+    Raises:
+        ValueError: If the model type is invalid
     """
 
     int_to_model = {"0": "deeplabv3resnet101", "1": "deeplabv3mobilenetv3large"}

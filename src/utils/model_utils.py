@@ -22,7 +22,6 @@ def validate(model: nn.Module, val_loader: DataLoader, criterion: nn.Module) -> 
     Returns:
         val_loss (float): The validation loss
     """
-
     model.eval()
 
     val_loss = 0
@@ -73,7 +72,6 @@ def train(
         info_file_path (str): The path to the info file
         model_save_path (str): The path to save the model to
     """
-
     print(f"🚀 Training model for {epochs} epochs...")
 
     best_val_loss = float("inf")
@@ -157,7 +155,6 @@ def load_model(model: nn.Module, model_save_path: str, force: bool = False) -> N
         model_save_path (str): The path to load the model from
         force (bool): Whether to force loading the model
     """
-
     if os.path.exists(model_save_path) or force:
         model.load_state_dict(torch.load(model_save_path))
         print(f"✅ Loaded model from {model_save_path}")

@@ -4,10 +4,12 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
+
 class UnseededDataLoader(DataLoader):
     """
     A DataLoader that does not set the random seed.
     """
+
     def __init__(self, *args, **kwargs):
         super(UnseededDataLoader, self).__init__(*args, **kwargs)
 
@@ -23,10 +25,12 @@ class UnseededDataLoader(DataLoader):
         for batch in super(UnseededDataLoader, self).__iter__():
             yield batch
 
+
 class RNGStateContext:
     """
     A context manager that saves and restores the state of the random number generators.
     """
+
     def __enter__(self):
         self.np_state = np.random.get_state()
         self.random_state = random.getstate()
@@ -42,10 +46,12 @@ class RNGStateContext:
         if torch.cuda.is_available():
             torch.cuda.random.set_rng_state_all(self.torch_cuda_state)
 
+
 class SeededDataLoader(DataLoader):
     """
     A deterministic DataLoader that sets the random seed.
     """
+
     def __init__(self, seed, *args, **kwargs):
         self.seed = seed
         super(SeededDataLoader, self).__init__(*args, **kwargs)

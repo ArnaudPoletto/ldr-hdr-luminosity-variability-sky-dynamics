@@ -1,10 +1,12 @@
 import sys
 from pathlib import Path
+
 GLOBAL_DIR = Path(__file__).parent / ".." / ".."
 sys.path.append(str(GLOBAL_DIR))
 
 import os
-os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
+
+os.environ["KMP_DUPLICATE_LIB_OK"] = "True"
 
 from typing import Tuple, List
 
@@ -247,7 +249,8 @@ class SCSegmentationDataset(torch.utils.data.Dataset):
 
 
 def _get_data_paths(
-    images_path: str, labels_path: str
+    images_path: str, 
+    labels_path: str
 ) -> Tuple[List[str], List[str], List[str]]:
     """
     Return a list of input and mask paths for the sky finder dataset.
@@ -278,14 +281,18 @@ def _get_data_paths(
         for folder_image_path in folder_image_paths:
             image_paths.append(folder_image_path)
             label_paths.append(
-                folder_image_path.replace(images_path, labels_path).replace(".jpg", ".png")
+                folder_image_path.replace(images_path, labels_path).replace(
+                    ".jpg", ".png"
+                )
             )
 
     return image_paths, label_paths
 
 
 def get_dataloaders(
-    batch_size: int, separate_clouds: bool = False, use_workers: bool = True
+    batch_size: int, 
+    separate_clouds: bool = False, 
+    use_workers: bool = True
 ) -> Tuple[DataLoader, DataLoader]:
     """
     Get train and validation data loaders.

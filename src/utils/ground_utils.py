@@ -13,16 +13,16 @@ IMAGENET_STD = [0.229, 0.224, 0.225]
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
-def get_model(
-    model_type: str, 
-    n_classes: int = 2
-) -> nn.Module:
+def get_model(model_type: str, n_classes: int = 2) -> nn.Module:
     """
     Get the model to be trained.
 
     Args:
         model_type (str): The model type
         n_classes (int, optional): The number of classes, defaults to 2
+
+    Raises:
+        ValueError: If the model type is invalid
 
     Returns:
         model (nn.Module): The model to be trained
@@ -58,9 +58,10 @@ def get_model(
 
     return model
 
+
 def get_model_from(
     model_save_path: str = "./ground_model.pth",
-    model_type: str = "deeplabv3mobilenetv3large", 
+    model_type: str = "deeplabv3mobilenetv3large",
 ) -> torch.nn.Module:
     """
     Get the ground segmentation model.
@@ -79,10 +80,8 @@ def get_model_from(
 
 
 def get_mask(
-        image: np.ndarray, 
-        ground_model: torch.nn.Module,
-        factor: float = 0.5
-        ) -> np.ndarray:
+    image: np.ndarray, ground_model: torch.nn.Module, factor: float = 0.5
+) -> np.ndarray:
     """
     Get the ground mask.
 

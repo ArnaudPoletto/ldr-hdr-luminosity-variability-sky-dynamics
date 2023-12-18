@@ -1,10 +1,12 @@
 import sys
 from pathlib import Path
+
 GLOBAL_DIR = Path(__file__).parent / ".." / ".."
 sys.path.append(str(GLOBAL_DIR))
 
 import os
-os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
+
+os.environ["KMP_DUPLICATE_LIB_OK"] = "True"
 
 from typing import Tuple
 
@@ -82,6 +84,9 @@ def _mask_reframe_frame(frame: np.ndarray, type: str) -> np.ndarray:
     Args:
         frame (np.ndarray): The frame to be masked and reframed
         type (str): The type of mask to be applied
+
+    Raises:
+        ValueError: If the mask type is invalid
 
     Returns:
         masked_reframed_frame (np.ndarray): The masked and reframed frame
@@ -277,6 +282,9 @@ def ask_n_processes():
     """
     Ask the user for the number of processes to use.
 
+    Raises:
+        ValueError: If the number of processes is invalid
+
     Returns:
         num_processes (int): The number of processes to use
     """
@@ -287,13 +295,14 @@ def ask_n_processes():
     else:
         try:
             num_processes = int(num_processes)
-            if num_processes <= 0 or num_processes > cpu_count:
-                raise Exception()
-        except:
-            print(
-                f"❌ Invalid number of processes: must be a positive integer less than or equal to the number of CPU cores available ({cpu_count})."
+        except ValueError:
+            raise ValueError(
+                "❌ Invalid number of processes: must be a positive integer."
             )
-            exit()
+        if num_processes <= 0 or num_processes > cpu_count:
+            raise ValueError(
+                "❌ Invalid number of processes: must be a positive integer less than or equal to the number of CPU cores available ({cpu_count})."
+            )
 
     return num_processes
 

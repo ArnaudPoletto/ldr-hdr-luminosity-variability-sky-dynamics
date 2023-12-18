@@ -1,9 +1,11 @@
 import sys
 from pathlib import Path
+
 GLOBAL_DIR = Path(__file__).parent / ".." / ".."
 sys.path.append(str(GLOBAL_DIR))
 
 import os
+
 os.environ["KMP_DUPLICATE_LIB_OK"] = "True"
 
 from typing import Tuple, List
@@ -239,9 +241,10 @@ def _get_cloud_percentage_data(
         cloud_percentage, show_image = _get_cloud_percentage(
             scene_path, ground_model, cloud_model, show=False, is_hdr=is_hdr
         )
-        data[
-            f'{file_format}{scene_num}.{"exr" if is_hdr else "mp4"}'
-        ] = {"cloud_percentage": cloud_percentage, "show_image": show_image}
+        data[f'{file_format}{scene_num}.{"exr" if is_hdr else "mp4"}'] = {
+            "cloud_percentage": cloud_percentage,
+            "show_image": show_image,
+        }
 
     return data
 
@@ -307,12 +310,12 @@ def _show_cloud_percentage_data(
 
 
 def _process_scenes(
-    ground_model: torch.nn.Module, 
-    cloud_model: torch.nn.Module, 
-    hdr_path: str, 
-    ldr_path: str, 
-    times: List[str], 
-    scene_mapping: dict = None
+    ground_model: torch.nn.Module,
+    cloud_model: torch.nn.Module,
+    hdr_path: str,
+    ldr_path: str,
+    times: List[str],
+    scene_mapping: dict = None,
 ):
     """
     Process the scenes.
@@ -324,6 +327,9 @@ def _process_scenes(
         ldr_path (str): The path to the LDR scenes
         times (List[str]): The times of the scenes
         scene_mapping (dict, optional): The mapping from scene number to scene number, defaults to None
+
+    Raises:
+        ValueError: If the choice is invalid
     """
     choice = input(
         "Enter 'HDR' for HDR processing or 'LDR' for LDR processing: "
@@ -348,10 +354,12 @@ if __name__ == "__main__":
     set_seed(SEED)
 
     # Get ground and cloud models
-    ground_model_type = "deeplabv3mobilenetv3large" # "deeplabv3resnet101" is too computationally expensive
+    ground_model_type = "deeplabv3mobilenetv3large"  # "deeplabv3resnet101" is too computationally expensive
     ground_model_save_path = f"{DATA_PATH}sky_ground_segmentation/models/{ground_model_type}_ranger_pretrained.pth"
-    ground_model = get_ground_model_from(model_save_path=ground_model_save_path, model_type=ground_model_type)
-    
+    ground_model = get_ground_model_from(
+        model_save_path=ground_model_save_path, model_type=ground_model_type
+    )
+
     cloud_model_save_path = f"{DATA_PATH}sky_cloud_segmentation/models/deeplabv3resnet101_ranger_pretrained.pth"
     cloud_model = get_cloud_model_from(model_save_path=cloud_model_save_path)
 

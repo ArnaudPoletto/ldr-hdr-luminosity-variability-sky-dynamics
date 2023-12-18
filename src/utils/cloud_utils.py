@@ -54,7 +54,6 @@ def get_model_from(
 
     Args:
         model_save_path (str, optional): The path to load the model from, defaults to './cloud_model.pth'
-        model_type (str, optional): The model type, defaults to 'deeplabv3resnet101'
 
     Returns:
         cloud_model (torch.nn.Module): The cloud segmentation model

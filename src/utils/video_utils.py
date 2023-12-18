@@ -3,11 +3,12 @@ import cv2
 import numpy as np
 from pathlib import Path
 
-GLOBAL_DIR = Path(__file__).parent / '..' / '..'
-DATA_PATH = str(GLOBAL_DIR / 'data') + '/'
+GLOBAL_DIR = Path(__file__).parent / ".." / ".."
+DATA_PATH = str(GLOBAL_DIR / "data") + "/"
 
-LEFT_MASK_PATH = DATA_PATH + 'left_mask.png'
-RIGHT_MASK_PATH = DATA_PATH + 'right_mask.png'
+LEFT_MASK_PATH = DATA_PATH + "left_mask.png"
+RIGHT_MASK_PATH = DATA_PATH + "right_mask.png"
+
 
 def get_video(video_path: str) -> cv2.VideoCapture:
     """
@@ -15,6 +16,9 @@ def get_video(video_path: str) -> cv2.VideoCapture:
 
     Args:
         video_path (str): The path to the video
+
+    Raises:
+        ValueError: If the video path is invalid
 
     Returns:
         cv2.VideoCapture: The VideoCapture object for the video
@@ -24,6 +28,7 @@ def get_video(video_path: str) -> cv2.VideoCapture:
 
     return cv2.VideoCapture(video_path)
 
+
 def get_frame_mask(type: str, reframed: bool = False) -> np.ndarray:
     """
     Return the left or right video mask, optionally reframed.
@@ -32,13 +37,18 @@ def get_frame_mask(type: str, reframed: bool = False) -> np.ndarray:
         type (str): The type of mask to be returned
         reframed (bool): Whether to reframe the mask, defaults to False
 
+    Raises:
+        ValueError: If the mask type is invalid
+
     Returns:
         mask (np.ndarray): The left or right mask, with values in [0, 1]
     """
-    if type not in ['left', 'right']:
+    if type not in ["left", "right"]:
         raise ValueError(f"❌ Invalid mask type {type}: must be 'left' or 'right'.")
-    
-    mask = cv2.imread(LEFT_MASK_PATH if type == 'left' else RIGHT_MASK_PATH, cv2.IMREAD_GRAYSCALE)
+
+    mask = cv2.imread(
+        LEFT_MASK_PATH if type == "left" else RIGHT_MASK_PATH, cv2.IMREAD_GRAYSCALE
+    )
     mask = np.where(mask > 255 * 0.5, 1, 0)
 
     if reframed:
@@ -50,6 +60,7 @@ def get_frame_mask(type: str, reframed: bool = False) -> np.ndarray:
 
     return mask.astype(np.uint8)
 
+
 def apply_frame_mask(frame: np.ndarray, type: str) -> np.ndarray:
     """
     Applies the left or right mask to the given frame.
@@ -58,10 +69,13 @@ def apply_frame_mask(frame: np.ndarray, type: str) -> np.ndarray:
         frame (np.ndarray): The frame to be masked
         type (str): The mask type to be applied
 
+    Raises:
+        ValueError: If the mask type is invalid
+
     Returns:
         masked_frame (np.ndarray): Masked frame.
     """
-    if type not in ['left', 'right']:
+    if type not in ["left", "right"]:
         raise ValueError(f"❌ Invalid mask type {type}: must be 'left' or 'right'.")
 
     mask = get_frame_mask(type)
@@ -69,7 +83,14 @@ def apply_frame_mask(frame: np.ndarray, type: str) -> np.ndarray:
 
     return masked_frame
 
-def get_frame_from_video(video: cv2.VideoCapture, frame: int, split: bool = True, masked: bool = False, reframed: bool = False) -> np.ndarray:
+
+def get_frame_from_video(
+    video: cv2.VideoCapture,
+    frame: int,
+    split: bool = True,
+    masked: bool = False,
+    reframed: bool = False,
+) -> np.ndarray:
     """
     Returns left and right frames at the given index from the video, optionally masked and reframed.
 
@@ -80,26 +101,31 @@ def get_frame_from_video(video: cv2.VideoCapture, frame: int, split: bool = True
         masked (bool): Whether to return the masked version of the frame, defaults to False
         reframed (bool): Whether to reframe the frame, defaults to False
 
+    Raises:
+        ValueError: If the frame index is invalid
+
     Returns:
         left_frame (np.ndarray): Left frame at the given index, with BGR channels in [0, 255].
         right_frame (np.ndarray): Right frame at the given index, with BGR channels in [0, 255].
     """
     if frame < 0 or frame >= video.get(cv2.CAP_PROP_FRAME_COUNT):
-        raise ValueError(f"❌ Invalid frame index {frame}: video has {int(video.get(cv2.CAP_PROP_FRAME_COUNT))} frames.")
+        raise ValueError(
+            f"❌ Invalid frame index {frame}: video has {int(video.get(cv2.CAP_PROP_FRAME_COUNT))} frames."
+        )
 
     video.set(cv2.CAP_PROP_POS_FRAMES, frame)
     _, frame = video.read()
 
     if split:
-        left_frame = frame[:, :frame.shape[1]//2]
-        right_frame = frame[:, frame.shape[1]//2:]
+        left_frame = frame[:, : frame.shape[1] // 2]
+        right_frame = frame[:, frame.shape[1] // 2 :]
     else:
         left_frame = frame
         right_frame = frame
 
     if masked:
-        left_frame = apply_frame_mask(left_frame, 'left')
-        right_frame = apply_frame_mask(right_frame, 'right')
+        left_frame = apply_frame_mask(left_frame, "left")
+        right_frame = apply_frame_mask(right_frame, "right")
 
     if reframed:
         # Remove rows containing all zeros
@@ -112,7 +138,14 @@ def get_frame_from_video(video: cv2.VideoCapture, frame: int, split: bool = True
 
     return left_frame.astype(np.uint8), right_frame.astype(np.uint8)
 
-def get_video_frame_iterator(video: cv2.VideoCapture, frame_step: int = 1, split: bool = True, masked: bool = False, reframed: bool = False) -> np.ndarray:
+
+def get_video_frame_iterator(
+    video: cv2.VideoCapture,
+    frame_step: int = 1,
+    split: bool = True,
+    masked: bool = False,
+    reframed: bool = False,
+) -> np.ndarray:
     """
     Return an iterator over the frames of the video, optionally masked and reframed.
 
@@ -121,7 +154,10 @@ def get_video_frame_iterator(video: cv2.VideoCapture, frame_step: int = 1, split
         frame_step (int): The number of frames to skip between each frame returned, defaults to 1
         split (bool): Whether to return the left and right frames separately, defaults to True
         masked (bool): Whether to return the masked version of the frame, defaults to False
-        reframe (bool): Whether to reframe the frame, defaults to False
+        reframed (bool): Whether to reframe the frame, defaults to False
+
+    Raises:
+        ValueError: If the frame step is invalid
 
     Returns:
         frame_iterator (np.ndarray): Iterator over the frames of the video, with BGR channels in [0, 255].

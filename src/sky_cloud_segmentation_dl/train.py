@@ -1,10 +1,12 @@
 import sys
 from pathlib import Path
+
 GLOBAL_DIR = Path(__file__).parent / ".." / ".."
 sys.path.append(str(GLOBAL_DIR))
 
 import os
-os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
+
+os.environ["KMP_DUPLICATE_LIB_OK"] = "True"
 
 from ranger_adabelief import RangerAdaBelief
 
@@ -92,7 +94,9 @@ def get_optimizer(
 
 
 def get_scheduler(
-    optimizer: optim.Optimizer, step_size: int = STEP_SIZE, gamma: float = GAMMA
+    optimizer: optim.Optimizer, 
+    step_size: int = STEP_SIZE, 
+    gamma: float = GAMMA
 ) -> lr_scheduler._LRScheduler:
     """
     Get the scheduler to be used for training.
@@ -109,6 +113,7 @@ def get_scheduler(
     print(f"✅ Loaded scheduler with step size {step_size} and gamma {gamma}.")
 
     return scheduler
+
 
 if __name__ == "__main__":
     # Set seed for deterministic results
