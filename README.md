@@ -32,6 +32,7 @@ This section guides you through the process of setting up the necessary environm
 Before beginning, ensure you have the following installed:
 
 * Python (version 3.11.5)
+* Conda (version 23.7.4)
 * Git (for cloning the repository)
 
 ### Cloning the Repository
@@ -39,25 +40,25 @@ Before beginning, ensure you have the following installed:
 Clone the repository to your local machine using Git:
 
 ```bash
-git clone https://github.com/pqhqhyvn/DaylightDynamics.git
+git clone https://github.com/pqhqhyvn/DaylightDynamics
 cd DaylightDynamics
 ``` 
 
 ### Environment Setup
 
-It is recommended to create a virtual environment for this project to manage dependencies effectively.
+It is recommended to create a new Conda environment for this project to manage dependencies effectively. Use the provided [environment.yml](/environment.yml) file to create the environment:
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+conda env create -f environment.yml
+conda activate dd
 ```
 
-### Installing Dependencies <span style="color: red;">[TODO: Setup requirements file]</span>
+### Installing Dependencies
 
-Install all required Python packages using the provided [requirements.txt](/requirements.txt) file:
+Install all required packages using the provided [requirements.txt](/requirements.txt) file:
 
 ```bash
-pip install -r requirements.txt
+conda install --file requirements.txt
 ```
 
 ### Running the Code
@@ -78,21 +79,18 @@ Our image processing approach involves standardizing each scene for consistent a
 
 To reproduce the results, follow these steps:
 
-1. Download the raw videos used in the study from <span style="color: red;">[TODO: Link to the dataset, if any]</span> and place them in the [data/ldr/raw](/data/ldr/raw/) directory in the following structure:
+1. Download the raw videos used in the study and place them in the [data/ldr/raw](/data/ldr/raw/) directory in the following structure:
     ```bash
     data
     ├── ldr
     │   ├── raw
-    │   │   ├── P1SceneXX.mp4
-    │   │   ├── P2ClearSceneXX.mp4
-    │   │   ├── P2OvercastSceneXX.mp4
-    └   └   └── P3SceneXX.mp4
+    │   │   └── P1SceneXX.mp4
     ```
 
 
 2. Go to the [src/processing](/src/processing/) directory:
     ```bash
-    cd src/processing/
+    cd src/processing/  # On Windows use `cd src\processing\`
     ```
 
 3. Run the following command:
@@ -187,10 +185,10 @@ To reproduce the results, follow these steps:
     └   └       └ mask.png
     ```
 
-2. Go to the [sky_cloud_segmentation_dl](/src/sky_cloud_segmentation_dl/) directory:
+2. Go to the [sky_ground_segmentation](/src/sky_ground_segmentation/) directory:
 
     ```bash
-    cd src/sky_cloud_segmentation_dl/
+    cd src/sky_ground_segmentation/   # On Windows use `cd src\sky_ground_segmentation\`
     ```
 
 3. Run the following command:
@@ -234,7 +232,7 @@ To reproduce the results, follow these steps:
 1. Go to the [sky_cloud_segmentation_dl](/src/sky_cloud_segmentation_dl/) directory:
 
     ```bash
-    cd src/sky_cloud_segmentation_dl/
+    cd src/sky_cloud_segmentation_dl/  # On Windows use `cd src\sky_cloud_segmentation_dl\`
     ```
 
 2. Run the following command:
@@ -266,7 +264,7 @@ To reproduce the results, follow these steps:
 3. Go to the [cloud_coverage](/src/cloud_coverage/) directory:
 
     ```bash
-    cd src/cloud_coverage/
+    cd src/cloud_coverage/ # On Windows use `cd src\cloud_coverage\`
     ```
 
 4. Run the following command:
@@ -303,7 +301,7 @@ To reproduce the results, follow these steps:
 2. Go to the [gld_lcim](/src/gld_lcim/) directory:
 
     ```bash
-    cd src/gld_lcim/
+    cd src/gld_lcim/ # On Windows use `cd src\gld_lcim\`
     ```
 
 3. To generate individual plots for each scene, run the following command:
@@ -316,7 +314,7 @@ To reproduce the results, follow these steps:
 4. To generate the box plot, run the following command:
 
     ```bash
-    python statistics.py
+    python scenes_plotting.py
     ```
     Generated images will be saved in the [gld_lcim](/generated/gld_lcim/) directory.
 

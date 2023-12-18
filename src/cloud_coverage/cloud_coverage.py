@@ -9,8 +9,8 @@ os.environ["KMP_DUPLICATE_LIB_OK"] = "True"
 from typing import Tuple, List
 
 import cv2
-import Imath
 import OpenEXR
+import Imath
 import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import tqdm
