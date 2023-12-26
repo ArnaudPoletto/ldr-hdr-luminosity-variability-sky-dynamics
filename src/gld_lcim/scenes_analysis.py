@@ -184,9 +184,8 @@ def analyze_scene(
             rgb_frame * ground_mask[:, :, np.newaxis]
         )  # Apply ground mask to frame
 
-        # Apply CLAHE to G channel, and act as L channel
+        # G channel acts as L channel
         l_channel = rgb_frame[:, :, 1]
-        l_channel = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8)).apply(l_channel)
 
         # Apply superpixel segmentation
         superpixels = slic(

@@ -84,7 +84,7 @@ To reproduce the results, follow these steps:
     data
     ├── ldr
     │   ├── raw
-    └   └   └── P1SceneXX.mp4
+    └   └   └ P1SceneXX.mp4
     ```
 
 
@@ -140,48 +140,48 @@ To reproduce the results, follow these steps:
     ```bash
     data
     ├── sky_ground_segmentation
-    |   ├── ade20k_outdoors
-    |   |   ├── images
-    |   |   |   ├ ADE_train_XXXXXXXX.jpg
-    |   |   |   └ ...
-    |   |   └── masks
-    |   |       ├ ADE_train_XXXXXXXX.png
-    |   |       └ ...
-    |   ├── cityscapes
-    |   |   ├── images
-    |   |   |   ├ X.png
-    |   |   |   └ ...
-    |   |   └── masks
-    |   |       ├ X.png
-    |   |       └ ...
-    |   ├── mapillary_vistas
-    |   |   ├── images
-    |   |   |   ├ X.jpg
-    |   |   |   └ ...
-    |   |   └── masks
-    |   |       ├ X.png
-    |   |       └ ...
-    |   ├── sky_finder
-    |   |   ├── images
-    |   |   |   ├── X
-    |   |   |   |   ├ X.jpg
-    |   |   |   |   └ ...
-    |   |   |   ├── ...
-    |   |   |   └ masks
-    |   |   |       ├ X.png
-    |   |   |       └ ...
-    |   ├── sun2012
-    |   |   ├── images
-    |   |   |   ├ X.jpg
-    |   |   |   └ ...
-    |   |   └── masks
-    |   |       ├ X.png
-    |   |       └ ...
-    |   ├── swimseg
-    |   |   ├── images
-    |   |   |   ├ XXXX.jpg
-    |   |   |   └ ...
-    |   |   └── masks
+    │   ├── ade20k_outdoors
+    │   │   ├── images
+    │   │   │   ├ ADE_train_XXXXXXXX.jpg
+    │   │   │   └ ...
+    │   │   └── masks
+    │   │       ├ ADE_train_XXXXXXXX.png
+    │   │       └ ...
+    │   ├── cityscapes
+    │   │   ├── images
+    │   │   │   ├ X.png
+    │   │   │   └ ...
+    │   │   └── masks
+    │   │       ├ X.png
+    │   │       └ ...
+    │   ├── mapillary_vistas
+    │   │   ├── images
+    │   │   │   ├ X.jpg
+    │   │   │   └ ...
+    │   │   └── masks
+    │   │       ├ X.png
+    │   │       └ ...
+    │   ├── sky_finder
+    │   │   ├── images
+    │   │   │   ├── X
+    │   │   │   │   ├ X.jpg
+    │   │   │   │   └ ...
+    │   │   │   ├── ...
+    │   │   │   └ masks
+    │   │   │       ├ X.png
+    │   │   │       └ ...
+    │   ├── sun2012
+    │   │   ├── images
+    │   │   │   ├ X.jpg
+    │   │   │   └ ...
+    │   │   └── masks
+    │   │       ├ X.png
+    │   │       └ ...
+    │   ├── swimseg
+    │   │   ├── images
+    │   │   │   ├ XXXX.jpg
+    │   │   │   └ ...
+    │   │   └── masks
     └   └       └ mask.png
     ```
 
