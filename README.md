@@ -53,14 +53,6 @@ conda env create -f environment.yml
 conda activate dd
 ```
 
-### Installing Dependencies
-
-Install all required packages using the provided [requirements.txt](/requirements.txt) file:
-
-```bash
-conda install --file requirements.txt
-```
-
 ### Running the Code
 
 Follow the README instructions for each part of the project to reproduce the results.
