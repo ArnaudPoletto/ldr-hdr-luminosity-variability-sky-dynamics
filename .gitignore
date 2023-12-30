@@ -1,3 +1,7 @@
+data/ldr/
+data/sky_ground_segmentation/*
+!data/sky_ground_segmentation/models
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
