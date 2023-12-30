@@ -8,6 +8,7 @@ import os
 
 os.environ["KMP_DUPLICATE_LIB_OK"] = "True"
 
+import argparse
 from ranger_adabelief import RangerAdaBelief
 
 from src.sky_ground_segmentation.dataset import get_dataloaders
@@ -111,33 +112,15 @@ def get_scheduler(
     return scheduler
 
 
-def ask_model():
-    """
-    Ask user for the model type.
-
-    Returns:
-        model_type (str): The model type
-
-    Raises:
-        ValueError: If the model type is invalid
-    """
-
-    int_to_model = {"0": "deeplabv3resnet101", "1": "deeplabv3mobilenetv3large"}
-    model_type = input(
-        "❓ Which model would you like to use?\n"
-        + "".join([f"\t{i}: {model}\n" for i, model in int_to_model.items()])
-    )
-    if model_type not in int_to_model.keys():
-        raise ValueError(f"❌ Invalid model type: {model_type}.")
-
-    return int_to_model[model_type]
-
-
 if __name__ == "__main__":
     # Set seed for deterministic results
     set_seed(SEED)
 
-    model_type = ask_model()
+    # Get model type
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--model_type", type=str, default='deeplabv3mobilenetv3large')
+    args = parser.parse_args()
+    model_type = args.model_type
 
     train_loader, _, val_loader = get_dataloaders(TRAIN_SPLIT, TEST_SPLIT, BATCH_SIZE)
 

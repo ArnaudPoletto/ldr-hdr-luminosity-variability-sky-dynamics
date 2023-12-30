@@ -13,6 +13,7 @@ from typing import Tuple
 import os
 import sys
 import cv2
+import argparse
 import numpy as np
 from tqdm import tqdm
 from multiprocessing import Process
@@ -278,52 +279,23 @@ def _process_video(
     print(f"✅ Processed {output_video_path}{scene_file}.")
 
 
-def ask_n_processes():
-    """
-    Ask the user for the number of processes to use.
-
-    Raises:
-        ValueError: If the number of processes is invalid
-
-    Returns:
-        num_processes (int): The number of processes to use
-    """
-    cpu_count = os.cpu_count()
-    num_processes = input(f"Enter number of processes (default {cpu_count}): ")
-    if num_processes == "":
-        num_processes = cpu_count
-    else:
-        try:
-            num_processes = int(num_processes)
-        except ValueError:
-            raise ValueError(
-                "❌ Invalid number of processes: must be a positive integer."
-            )
-        if num_processes <= 0 or num_processes > cpu_count:
-            raise ValueError(
-                "❌ Invalid number of processes: must be a positive integer less than or equal to the number of CPU cores available ({cpu_count})."
-            )
-
-    return num_processes
-
-
-def ask_mask_reframe():
-    """
-    Ask the user whether to mask and reframe the frames.
-
-    Returns:
-        mask_reframe (bool): Whether to mask and reframe the frames
-    """
-    mask_reframe = input("Mask and reframe frames? (y/n): ")
-    mask_reframe = mask_reframe.lower() == "y"
-
-    return mask_reframe
-
-
 if __name__ == "__main__":
-    # Ask user for number of processes and whether to mask and reframe frames
-    num_processes = ask_n_processes()
-    mask_reframe = ask_mask_reframe()
+    # Get number of processes and whether to mask and reframe frames
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--num_processes",
+        type=int,
+        default=os.cpu_count(),
+        help="The number of processes to use",
+    )
+    parser.add_argument(
+        "--mask_reframe",
+        action="store_true",
+        help="Whether to mask and reframe the frames",
+    )
+    args = parser.parse_args()
+    num_processes = args.num_processes
+    mask_reframe = args.mask_reframe
 
     print(
         f"▶️  Processing {'and reframing ' if mask_reframe else ''}scenes using {num_processes} processes..."

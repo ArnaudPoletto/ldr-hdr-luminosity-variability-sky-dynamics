@@ -95,8 +95,12 @@ To reproduce the results, follow these steps:
 
 3. Run the following command:
     ```bash
-    python processing.py
+    python processing.py --num_processes <num_processes> --mask_reframe <mask_reframe>
     ```
+    Where:
+    * `<num_processes>` is the number of processes to use for parallel processing. If not specified, the default value is your CPU's number of cores.
+    * `<mask_reframe>` whether to reframe the video or not. If not specified, the default value is `False`.
+
     Processed videos will be saved in the [data/ldr/processed](/data/ldr/processed/) or [data/ldr/processed_reframed](/data/ldr/processed_reframed/) directory, depending on the processing method selected.
     
 
@@ -194,8 +198,9 @@ To reproduce the results, follow these steps:
 3. Run the following command:
 
     ```bash
-    python train.py
+    python train.py --model_type <model_type>
     ```
+    Where `<model_type>` is the type of the model to train. It can be either `deeplabv3mobilenetv3large` or `deeplabv3resnet101`. If not specified, the default value is `deeplabv3mobilenetv3large`.
 
 ## 3. Cloud Segmentation
 
@@ -219,7 +224,7 @@ Here are examples of training and validation samples from our custom dataset ([s
 
 ### 3.2. Trained Weights
 
-Weights for the DeepLabV3 with ResNet101 backbone can be found [here](/data/sky_cloud_segmentation/models/deeplabv3resnet101_ranger_pretrained.pth)
+Weights for the DeepLabV3 with ResNet101 backbone can be found [here](/data/sky_cloud_segmentation/models/deeplabv3resnet101_ranger_pretrained.pth).
 
 ### 3.3. Errors and Limitations
 
@@ -245,7 +250,7 @@ To reproduce the results, follow these steps:
 
 ### 4.1. Description
 
-We employ the [cloud segmentation](#2-cloud-segmentation) model to estimate cloud coverage in both Low Dynamic Range (LDR) and High Dynamic Range (HDR) scenes. For HDR scenes, an essential preprocessing step is tone-mapping, which adjusts the scenes to a standard dynamic range suitable for analysis. The model processes these scenes to generate a segmentation mask, differentiating between sky and clouds. This mask is then utilized to accurately estimate cloud coverage, providing critical data for analyzing the impact of clouds on urban daylight conditions.
+We employ the [cloud segmentation](#3-cloud-segmentation) model to estimate cloud coverage in both Low Dynamic Range (LDR) and High Dynamic Range (HDR) scenes. For HDR scenes, an essential preprocessing step is tone-mapping, which adjusts the scenes to a standard dynamic range suitable for analysis. The model processes these scenes to generate a segmentation mask, differentiating between sky and clouds. This mask is then utilized to accurately estimate cloud coverage, providing critical data for analyzing the impact of clouds on urban daylight conditions.
 
 The results of this analysis on HDR images are shown below:
 
