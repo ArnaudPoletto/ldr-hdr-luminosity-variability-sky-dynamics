@@ -231,7 +231,11 @@ def analyze_scene(
 
             # Flow sum
             flow = get_flow(previous_l_channel, l_channel, mask=ground_mask)
-            flow_sum = np.sum((flow[:, :, 0] ** 2 + flow[:, :, 1] ** 2) ** 0.5)
+            magnitudes = np.linalg.norm(flow, axis=2)
+            flow_sum = np.sum(magnitudes)
+            flow_sum = flow_sum / np.sum(
+                ground_mask
+            )  # Normalize by number of sky pixels
             flow_sums.append(flow_sum)
 
             g_means.append(g_mean)
