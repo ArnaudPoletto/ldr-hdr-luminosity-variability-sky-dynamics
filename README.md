@@ -1,5 +1,18 @@
 # Comparative Analysis of LDR vs. HDR Imaging: Quantifying Luminosity Variability and Sky Dynamics through Image Processing Techniques
 
+## Authors
+
+* Yunni Cho<sup>a</sup>
+* Arnaud Lucien Poletto<sup>a</sup>
+* Dong Hyun Kim<sup>a</sup>
+* Caroline Karmann<sup>b</sup>
+* Marilyne Andersen<sup>a</sup>
+
+<sup>a</sup> Laboratory of Integrated Performance in Design (LIPID), School of Architecture, Civil and Environmental
+Engineering (ENAC), École Polytechnique Fédérale de Lausanne (EPFL), Lausanne, Switzerland
+<sup>b</sup> Laboratory of Architecture and Intelligent Living, Institute for Building Design and Technology (IEB),
+Department of Architecture, Karlsruhe Institute of Technology (KIT), Karlsruhe, Germany
+
 ## Introduction
 
 This GitHub repository is dedicated to the research project "Daylight Dynamics: A New Approach to Analyzing Luminous Variability". It provides a centralized platform for accessing all materials related to our study on the temporal dynamics of natural light and its implications in daylighting and built environments.
