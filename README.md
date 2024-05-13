@@ -1,4 +1,4 @@
-# Daylight Dynamics: A New Approach to Analyzing Luminous Variability
+# Comparative Analysis of LDR vs. HDR Imaging: Quantifying Luminosity Variability and Sky Dynamics through Image Processing Techniques
 
 ## Introduction
 
