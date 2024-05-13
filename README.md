@@ -10,6 +10,7 @@
 
 <sup>a</sup> Laboratory of Integrated Performance in Design (LIPID), School of Architecture, Civil and Environmental
 Engineering (ENAC), École Polytechnique Fédérale de Lausanne (EPFL), Lausanne, Switzerland
+
 <sup>b</sup> Laboratory of Architecture and Intelligent Living, Institute for Building Design and Technology (IEB),
 Department of Architecture, Karlsruhe Institute of Technology (KIT), Karlsruhe, Germany
 
