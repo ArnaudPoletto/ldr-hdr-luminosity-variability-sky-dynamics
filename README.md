@@ -16,7 +16,7 @@ Department of Architecture, Karlsruhe Institute of Technology (KIT), Karlsruhe, 
 
 ## Introduction
 
-This GitHub repository is dedicated to the research project "Comparative Analysis of LDR vs. HDR Imaging: Quantifying Luminosity Variability and Sky Dynamics through Image Processing Techniques". It provides a centralized platform for accessing all materials related to our study on the temporal dynamics of natural light and its implications in daylighting and built environments.
+This GitHub repository is dedicated to the research project "Comparative Analysis of LDR vs. HDR Imaging: Quantifying Luminosity Variability and Sky Dynamics through Image Processing Techniques". It provides a centralized platform for accessing all materials related to our study.
 
 ## Paper Abstract
 
