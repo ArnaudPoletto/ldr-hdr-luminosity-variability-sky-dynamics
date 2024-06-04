@@ -1,5 +1,7 @@
 # Comparative Analysis of LDR vs. HDR Imaging: Quantifying Luminosity Variability and Sky Dynamics through Image Processing Techniques
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11467247.svg)](https://doi.org/10.5281/zenodo.11467247)
+
 ## Authors
 
 * Yunni Cho<sup>a</sup>
