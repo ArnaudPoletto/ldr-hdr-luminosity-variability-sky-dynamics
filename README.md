@@ -334,7 +334,7 @@ To reproduce the results, follow these steps:
     Generated images will be saved in the [gld_lcim](/generated/gld_lcim/) directory.
 
 ## License, Copyrights and Acknowledgements
-### Copyright (c) Cho et al., EPFL
+### Copyright (c) 2024 Yunni Cho and Arnaud Poletto, EPFL
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License
 as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
