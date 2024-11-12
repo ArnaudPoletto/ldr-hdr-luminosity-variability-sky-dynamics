@@ -1,8 +1,28 @@
-# Daylight Dynamics: A New Approach to Analyzing Luminous Variability
+# Comparative Analysis of LDR vs. HDR Imaging: Quantifying Luminosity Variability and Sky Dynamics through Image Processing Techniques
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11467247.svg)](https://doi.org/10.5281/zenodo.11467247)
+
+## Authors
+
+* Yunni Cho<sup>a</sup>
+* Arnaud Lucien Poletto<sup>a</sup>
+* Dong Hyun Kim<sup>a</sup>
+* Caroline Karmann<sup>b</sup>
+* Marilyne Andersen<sup>a</sup>
+
+<sup>a</sup> Laboratory of Integrated Performance in Design (LIPID), School of Architecture, Civil and Environmental
+Engineering (ENAC), École Polytechnique Fédérale de Lausanne (EPFL), Lausanne, Switzerland
+
+<sup>b</sup> Laboratory of Architecture and Intelligent Living, Institute for Building Design and Technology (IEB),
+Department of Architecture, Karlsruhe Institute of Technology (KIT), Karlsruhe, Germany
 
 ## Introduction
 
-This GitHub repository is dedicated to the research project "Daylight Dynamics: A New Approach to Analyzing Luminous Variability". It provides a centralized platform for accessing all materials related to our study on the temporal dynamics of natural light and its implications in daylighting and built environments.
+This GitHub repository is dedicated to the research project "Comparative Analysis of LDR vs. HDR Imaging: Quantifying Luminosity Variability and Sky Dynamics through Image Processing Techniques". It provides a centralized platform for accessing all materials related to our study.
+
+## Paper Abstract
+
+This study introduces a novel procedure combining image analysis techniques to examine the temporal changes in natural light, a key aspect in daylighting and built environment research. Our approach utilizes both Low Dynamic Range (LDR) and High Dynamic Range (HDR) camera outputs and captures an extensive range of sky conditions, identifying overall light distribution patterns and detailed luminous fluctuations. A key aspect of this study is the strategic use of the unique strengths of both LDR and HDR imaging to capture intricate light variations without requiring specialized equipment, and to rely on the potential offered by image processing algorithms to effectively detect subtle luminance shifts. Additionally, our process utilizes deep learning to distinguish between sky and cloud regions, and conducts a detailed comparison with empirical values derived from HDR captures to ensure the robustness of our computational analysis. This offers a practical and economical alternative to conventional methods that depend on dedicated instrumentation like hyperspectral or photosensor-based cameras, thereby broadening its applicability in future daylight studies.
 
 ## Repository Contents
 
@@ -314,6 +334,20 @@ To reproduce the results, follow these steps:
     python scenes_plotting.py
     ```
     Generated images will be saved in the [gld_lcim](/generated/gld_lcim/) directory.
+
+## License, Copyrights and Acknowledgements
+### Copyright (c) 2024 Yunni Cho and Arnaud Poletto, EPFL
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License
+as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program.
+If not, see <https://www.gnu.org/licenses/>.
+
+### Acknowledgements
+This work was funded by EPFL and the Swiss National Science Foundation (SNSF Grant #200021_197178) as part of the research project entitled "Outside seen from inside out: Impact of views and daylight composition on our visual experience."
 
 ## References
 
