@@ -243,35 +243,6 @@ def analyze_scene(
             cloud_percents.append(cloud_percent)
             light_percents.append(light_percent)
 
-            # Show plot with video processing steps
-            # plt.figure(figsize=(20, 12))
-            # gs = gridspec.GridSpec(3, 2)
-
-            # ax0 = plt.subplot(gs[0, 0])
-            # ax0.imshow(rgb_frame)
-            # ax0.set_title(f"RGB Frame")
-
-            # ax1 = plt.subplot(gs[1, 0])
-            # ax1.imshow(l_channel)
-            # ax1.set_title(f"G Channel")
-
-            # ax3 = plt.subplot(gs[1, 1])
-            # ax3.imshow(sp_masked_l_channel)
-            # ax3.set_title(f"Superpixel G Channel")
-
-            # ax2 = plt.subplot(gs[2, 0])
-            # ax2.imshow(cloud_mask, cmap='gray')
-            # ax2.set_title(f"Cloud Mask")
-
-            # ax4 = plt.subplot(gs[2, 1])
-            # ax4.imshow(sp_lighting_mask, cmap='gray')
-            # ax4.set_title(f"Lighting Mask")
-
-            # plt.suptitle(f"Video processing for {video_path.split('/')[-1]} with frame step {frame_step}")
-
-            # plt.tight_layout()
-            # plt.show()
-
         previous_rgb_frame = rgb_frame
         previous_l_channel = l_channel
 
