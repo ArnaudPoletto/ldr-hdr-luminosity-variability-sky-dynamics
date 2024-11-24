@@ -220,6 +220,8 @@ def analyze_scene(
 
             # L1 G difference
             diff_g_sum = get_frame_channel_diff_sum(rgb_frame, previous_rgb_frame, 1)
+            # Divide by number of sky pixels
+            diff_g_sum /= np.sum(ground_mask)
 
             # Cloud percent
             cloud_mask = get_cloud_mask(rgb_frame / 255.0, cloud_model, factor=0.5)
